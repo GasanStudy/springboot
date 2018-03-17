@@ -1,5 +1,6 @@
-package com.example.demo.vo;
+package com.todo.domain.member;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,17 +13,17 @@ import lombok.ToString;
 @Data
 @ToString
 @Entity
-@Table(name="sample")
-public class SampleVO {
+@Table(name="member")
+public class Member {
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.AUTO)
-	  private Integer mno;
+	  @Column(name = "id")
+	  private Integer id;
 
-	  private String firstName;
+	  private Integer back;
 
-	  private String lastName;
+	  private String name;
+	  
+	  private Integer team;
 
 	}
-
-
-
