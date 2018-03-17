@@ -62,4 +62,4 @@ public class MemberRepositoryTest {
 //        assertTrue(posts.getCreatedDate().isAfter(now));
 //        assertTrue(posts.getModifiedDate().isAfter(now));
 //    }
-//}
+}
