@@ -1,29 +1,36 @@
 package com.todo.domain.member;
 
+import com.todo.domain.BaseTimeEntity;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @Entity
-@Table(name="member")
-public class Member {
-	  @Id
-	  @GeneratedValue(strategy = GenerationType.AUTO)
-	  @Column(name = "id")
-	  private Integer id;
+public class Member extends BaseTimeEntity {
+	@Id
+	@GeneratedValue
+	private Long id;
 
-	  private Integer back;
+	@Column(length = 500, nullable = false)
+	private String title;
 
-	  private String name;
-	  
-	  private Integer team;
+	@Column(columnDefinition = "TEXT", nullable = false)
+	private String content;
 
+	private String author;
+
+	@Builder
+	public Member(String title, String content, String author) {
+		this.title = title;
+		this.content = content;
+		this.author = author;
 	}
+}

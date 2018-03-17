@@ -1,4 +1,4 @@
-package com.todo;
+package com.todo.web;
 
 import java.util.List;
 
