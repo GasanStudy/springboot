@@ -1,4 +1,3 @@
-.gradle
 /build/
 /bin/
 /out/
@@ -25,3 +24,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
