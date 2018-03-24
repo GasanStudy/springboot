@@ -19,47 +19,49 @@ import static org.junit.Assert.assertTrue;
 @SpringBootTest
 public class MemberRepositoryTest {
 
-//    @Autowired
-//    PostsRepository postsRepository;
-//
-//    @After
-//    public void cleanup() {
-//        postsRepository.deleteAll();
-//    }
-//
-//    @Test
-//    public void 게시글저장_불러오기() {
-//        //given
-//        postsRepository.save(Posts.builder()
-//                .title("테스트 게시글")
-//                .content("테스트 본문")
-//                .author("jojoldu@gmail.com")
-//                .build());
-//
-//        //when
-//        List<Posts> postsList = postsRepository.findAll();
-//
-//        //then
-//        Posts posts = postsList.get(0);
-//        assertThat(posts.getTitle(), is("테스트 게시글"));
-//        assertThat(posts.getContent(), is("테스트 본문"));
-//    }
-//
-//    @Test
-//    public void BaseTimeEntity_등록 () {
-//        //given
-//        LocalDateTime now = LocalDateTime.now();
-//        postsRepository.save(Posts.builder()
-//                .title("테스트 게시글")
-//                .content("테스트 본문")
-//                .author("jojoldu@gmail.com")
-//                .build());
-//        //when
-//        List<Posts> postsList = postsRepository.findAll();
-//
-//        //then
-//        Posts posts = postsList.get(0);
-//        assertTrue(posts.getCreatedDate().isAfter(now));
-//        assertTrue(posts.getModifiedDate().isAfter(now));
-//    }
+    @Autowired
+    MemberRepository memberRepository;
+
+
+    @After
+    public void cleanup() {
+        memberRepository.deleteAll();
+    }
+
+    @Test
+    public void 회원목록_불러오기() {
+        //given
+        memberRepository.save(Member.builder()
+                .email("test@email.com")
+                .name("테스트")
+                .build());
+
+        //when
+        List<Member> memberList = memberRepository.findAll();
+
+        //then
+        Member member = memberList.get(0);
+        assertThat(member.getName(), is("테스트"));
+        assertThat(member.getEmail(), is("test@email.com"));
+    }
+
+    @Test
+    public void BaseTimeEntity_등록 () {
+        //given
+        LocalDateTime now = LocalDateTime.now();
+        System.out.print(now);
+        memberRepository.save(Member.builder()
+                .email("jojoldu@gmail.com")
+                .name("테스트")
+                .build());
+        //when
+        List<Member> memberList = memberRepository.findAll();
+
+        //then
+        Member member = memberList.get(0);
+        assertTrue(member.getCreatedDate().isAfter(now));
+        assertTrue(member.getModifiedDate().isAfter(now));
+        System.out.print(now);
+        System.out.print(member.getCreatedDate());
+    }
 }

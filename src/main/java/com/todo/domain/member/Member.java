@@ -25,7 +25,7 @@ public class Member extends BaseTimeEntity {
 
 	String name;
 
-	String Password;
+	String password;
 
 	@Column(name = "birth_date")
 	Date birthDate;
@@ -55,7 +55,7 @@ public class Member extends BaseTimeEntity {
 	public Member(String email, String name, String password, Date birthDate, String telNum, Integer emailYN, String snsFacebook, String snsGoogle, String snsNaver, List<Category> categories, List<Assignment> assignments) {
 		this.email = email;
 		this.name = name;
-		Password = password;
+		this.password = password;
 		this.birthDate = birthDate;
 		this.telNum = telNum;
 		this.emailYN = emailYN;
