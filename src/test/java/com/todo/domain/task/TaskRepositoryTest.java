@@ -22,23 +22,23 @@ public class TaskRepositoryTest {
     @Autowired
     TaskRepository taskRepository;
 
-
-    @Test
-    public void 회원목록_불러오기() {
-        //given
-    	taskRepository.save(Task.builder()
-                .title("test")
-                .content("test")
-                .build());
-
-        //when
-        List<Task> tasklist = taskRepository.findAll();
-
-        //then
-        Task task = tasklist.get(0);
-        assertThat(task.getTitle(), is("test"));
-        assertThat(task.getContent(), is("test"));
-    }
+//
+//    @Test
+//    public void 회원목록_불러오기() {
+//        //given
+//    	taskRepository.save(Task.builder()
+//                .title("test")
+//                .content("test")
+//                .build());
+//
+//        //when
+//        List<Task> tasklist = taskRepository.findAll();
+//
+//        //then
+//        Task task = tasklist.get(1);
+//        assertThat(task.getTitle(), is("test"));
+//        assertThat(task.getContent(), is("test"));
+//    }
 
  
 }
