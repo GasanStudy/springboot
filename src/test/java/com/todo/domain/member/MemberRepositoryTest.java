@@ -49,7 +49,7 @@ public class MemberRepositoryTest {
     public void BaseTimeEntity_등록 () {
         //given
         LocalDateTime now = LocalDateTime.now();
-        System.out.print(now);
+
         memberRepository.save(Member.builder()
                 .email("jojoldu@gmail.com")
                 .name("테스트")
@@ -61,7 +61,6 @@ public class MemberRepositoryTest {
         Member member = memberList.get(0);
         assertTrue(member.getCreatedDate().isAfter(now));
         assertTrue(member.getModifiedDate().isAfter(now));
-        System.out.print(now);
-        System.out.print(member.getCreatedDate());
+
     }
 }

@@ -1,8 +1,9 @@
-package com.todo.service;
+package com.todo.service.member;
 
 import com.todo.domain.member.Member;
 import com.todo.domain.member.MemberRepository;
 import com.todo.dto.member.MemberSaveRequestDto;
+import com.todo.service.MemberService;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PostServiceTest {
+public class MemberServiceTest {
     @Autowired
     private MemberService memberService;
 

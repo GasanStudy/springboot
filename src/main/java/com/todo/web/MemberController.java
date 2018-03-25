@@ -1,20 +1,20 @@
 package com.todo.web;
 
 import com.todo.domain.member.MemberRepository;
+import com.todo.dto.member.MemberMainResponseDto;
 import com.todo.dto.member.MemberSaveRequestDto;
 import com.todo.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 
 @RestController
-@AllArgsConstructor //lombok이 생성자 관리해줌
-public class WebRestController {
+@RequestMapping("/member")
+@AllArgsConstructor
+public class MemberController {
 
     private MemberService memberService;
 
@@ -23,9 +23,18 @@ public class WebRestController {
         return "HelloWorld";
     }
 
-    @PostMapping("/member")
+    @GetMapping("/{cusId}")
+    public MemberMainResponseDto findMember(Long cusId) {
+        return memberService.readOneMember(cusId);
+    }
+
+    @PostMapping("/register")
     public Long saveMember(@RequestBody MemberSaveRequestDto dto){
         return memberService.save(dto);
+    }
+    @DeleteMapping("/delete/{cusId}")
+    public void deleteMember(Long cusId){
+        memberService.delete(cusId);
     }
 
 }
