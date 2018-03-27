@@ -23,45 +23,40 @@ public class MemberRepositoryTest {
     MemberRepository memberRepository;
 
 
-    @After
-    public void cleanup() {
-        memberRepository.deleteAll();
-    }
-
     @Test
     public void 회원목록_불러오기() {
         //given
         memberRepository.save(Member.builder()
                 .email("test@email.com")
-                .name("테스트")
+                .name("aaaa")
                 .build());
 
         //when
         List<Member> memberList = memberRepository.findAll();
 
         //then
-        Member member = memberList.get(0);
-        assertThat(member.getName(), is("테스트"));
+        Member member = memberList.get(1);
+        assertThat(member.getName(), is("aaaa"));
         assertThat(member.getEmail(), is("test@email.com"));
     }
 
-    @Test
-    public void BaseTimeEntity_등록 () {
-        //given
-        LocalDateTime now = LocalDateTime.now();
-        System.out.print(now);
-        memberRepository.save(Member.builder()
-                .email("jojoldu@gmail.com")
-                .name("테스트")
-                .build());
-        //when
-        List<Member> memberList = memberRepository.findAll();
-
-        //then
-        Member member = memberList.get(0);
-        assertTrue(member.getCreatedDate().isAfter(now));
-        assertTrue(member.getModifiedDate().isAfter(now));
-        System.out.print(now);
-        System.out.print(member.getCreatedDate());
-    }
+//    @Test
+//    public void BaseTimeEntity_등록 () {
+//        //given
+//        LocalDateTime now = LocalDateTime.now();
+//        System.out.print(now);
+//        memberRepository.save(Member.builder()
+//                .email("jojoldu@gmail.com")
+//                .name("테스트")
+//                .build());
+//        //when
+//        List<Member> memberList = memberRepository.findAll();
+//
+//        //then
+//        Member member = memberList.get(0);
+//        assertTrue(member.getCreatedDate().isAfter(now));
+//        assertTrue(member.getModifiedDate().isAfter(now));
+//        System.out.print(now);
+//        System.out.print(member.getCreatedDate());
+//    }
 }

@@ -11,8 +11,9 @@ import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
+@Data
 @Entity
+@ToString
 public class Task extends BaseTimeEntity {
 
     @Id
@@ -51,20 +52,23 @@ public class Task extends BaseTimeEntity {
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name= "category_id")
     private Long categoryId;
+    
+    
+    
 
-    @Builder
-
-    public Task(String title, String content, String remindCode, String shareCode, Date startDate, Date endDate, Date startTime, Date endTime, List<Reminder> reminders, List<Assignment> assignments, Long categoryId) {
-        this.title = title;
-        this.content = content;
-        this.remindCode = remindCode;
-        this.shareCode = shareCode;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.reminders = reminders;
-        this.assignments = assignments;
-        this.categoryId = categoryId;
-    }
+//    @Builder
+//
+//    public Task(String title, String content, String remindCode, String shareCode, Date startDate, Date endDate, Date startTime, Date endTime, List<Reminder> reminders, List<Assignment> assignments, Long categoryId) {
+//        this.title = title;
+//        this.content = content;
+//        this.remindCode = remindCode;
+//        this.shareCode = shareCode;
+//        this.startDate = startDate;
+//        this.endDate = endDate;
+//        this.startTime = startTime;
+//        this.endTime = endTime;
+//        this.reminders = reminders;
+//        this.assignments = assignments;
+//        this.categoryId = categoryId;
+//    }
 }
