@@ -41,7 +41,6 @@ public class TaskController {
 	public void update(Task task) {
 		 Task t = tr.getOne(task.getId());
 		 t = task;
-		 tr.save(t);
-		 
+		 tr.save(t);	 
 	}
 }
