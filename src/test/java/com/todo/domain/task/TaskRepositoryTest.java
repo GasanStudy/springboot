@@ -68,7 +68,8 @@ public class TaskRepositoryTest {
     
     }
     @Test
-    public void task_카테고리삭제하기() {
+    public void task_카테고리삭제하기test() {
+    	int test;
     	
     }
     @Test
