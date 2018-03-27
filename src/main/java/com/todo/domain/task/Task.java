@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
+@Data
 @Entity
 public class Task extends BaseTimeEntity {
 
