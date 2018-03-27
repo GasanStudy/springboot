@@ -2,6 +2,7 @@ package com.todo.domain.assignment;
 
 import com.todo.domain.BaseTimeEntity;
 import com.todo.domain.member.Member;
+import com.todo.domain.reminder.Reminder;
 import com.todo.domain.task.Task;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -35,6 +37,15 @@ public class Assignment extends BaseTimeEntity {
     @ManyToOne(targetEntity=Task.class)
     @JoinColumn(name = "task_id")
     Long taskId;
+
+    @ManyToOne(targetEntity=Assignment.class)
+    @JoinColumn(name = "assignment_id")
+    Long assignmentId;
+
+
+    @OneToMany(mappedBy = "assignmentId")
+    private List<Reminder> reminders;
+
 
     @Builder
 

@@ -1,6 +1,7 @@
 package com.todo.domain.reminder;
 
 import com.todo.domain.BaseTimeEntity;
+import com.todo.domain.assignment.Assignment;
 import com.todo.domain.task.Task;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -26,14 +27,15 @@ public class Reminder extends BaseTimeEntity {
     @Column(name = "date_time")
     Date dateTime;
 
-    @ManyToOne(targetEntity = Task.class)
-    @JoinColumn(name = "task_id")
-    Long taskId;
+    @ManyToOne(targetEntity = Assignment.class)
+    @JoinColumn(name = "assignment_id")
+    Long assignmentId;
 
     @Builder
-    public Reminder(Long codeId, Date dateTime, Long taskId) {
+
+    public Reminder(Long codeId, Date dateTime, Long assignmentId) {
         this.codeId = codeId;
         this.dateTime = dateTime;
-        this.taskId = taskId;
+        this.assignmentId = assignmentId;
     }
 }

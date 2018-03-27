@@ -2,8 +2,7 @@ package com.todo.domain.task;
 
 import com.todo.domain.BaseTimeEntity;
 import com.todo.domain.assignment.Assignment;
-import com.todo.domain.category.Category;
-import com.todo.domain.reminder.Reminder;
+import com.todo.domain.member.Member;
 import lombok.*;
 
 import javax.persistence.*;
@@ -43,18 +42,16 @@ public class Task extends BaseTimeEntity {
 
 
     @OneToMany(mappedBy = "taskId")
-    private List<Reminder> reminders;
-
-    @OneToMany(mappedBy = "taskId")
     private List<Assignment> assignments;
 
-    @ManyToOne(targetEntity = Category.class)
-    @JoinColumn(name= "category_id")
-    private Long categoryId;
+    @ManyToOne(targetEntity = Member.class)
+    @JoinColumn(name= "member_id")
+    private Long taskMemberId;
+
 
     @Builder
 
-    public Task(String title, String content, String remindCode, String shareCode, Date startDate, Date endDate, Date startTime, Date endTime, List<Reminder> reminders, List<Assignment> assignments, Long categoryId) {
+    public Task(String title, String content, String remindCode, String shareCode, Date startDate, Date endDate, Date startTime, Date endTime, List<Assignment> assignments, Long taskMemberId) {
         this.title = title;
         this.content = content;
         this.remindCode = remindCode;
@@ -63,8 +60,7 @@ public class Task extends BaseTimeEntity {
         this.endDate = endDate;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.reminders = reminders;
         this.assignments = assignments;
-        this.categoryId = categoryId;
+        this.taskMemberId = taskMemberId;
     }
 }

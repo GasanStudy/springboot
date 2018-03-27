@@ -3,6 +3,7 @@ package com.todo.domain.member;
 import com.todo.domain.BaseTimeEntity;
 import com.todo.domain.assignment.Assignment;
 import com.todo.domain.category.Category;
+import com.todo.domain.task.Task;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -51,8 +52,11 @@ public class Member extends BaseTimeEntity {
 	@OneToMany(mappedBy = "assignmentMemberId")
 	private List<Assignment> assignments;
 
+	@OneToMany(mappedBy = "taskMemberId")
+	private List<Task> tasks;
+
 	@Builder
-	public Member(String email, String name, String password, Date birthDate, String telNum, Integer emailYN, String snsFacebook, String snsGoogle, String snsNaver, List<Category> categories, List<Assignment> assignments) {
+	public Member(String email, String name, String password, Date birthDate, String telNum, Integer emailYN, String snsFacebook, String snsGoogle, String snsNaver, List<Category> categories, List<Assignment> assignments, List<Task> tasks) {
 		this.email = email;
 		this.name = name;
 		this.password = password;
@@ -64,5 +68,6 @@ public class Member extends BaseTimeEntity {
 		this.snsNaver = snsNaver;
 		this.categories = categories;
 		this.assignments = assignments;
+		this.tasks = tasks;
 	}
 }

@@ -1,6 +1,7 @@
 package com.todo.domain.category;
 
 import com.todo.domain.BaseTimeEntity;
+import com.todo.domain.assignment.Assignment;
 import com.todo.domain.member.Member;
 import com.todo.domain.task.Task;
 import lombok.*;
@@ -22,19 +23,20 @@ public class Category extends BaseTimeEntity {
     String memo;
 
 
-    @OneToMany(mappedBy = "categoryId")
-    private List<Task> taskList;
-
     @ManyToOne(targetEntity=Member.class)
     @JoinColumn(name = "member_id")
     Long categoryMemberId;
 
+    @OneToMany(mappedBy = "assignmentId")
+    private List<Assignment> assignments;
+
 
     @Builder
-    public Category(String title, String memo, Long categoryMemberId, List<Task> taskList) {
+
+    public Category(String title, String memo, Long categoryMemberId, List<Assignment> assignments) {
         this.title = title;
         this.memo = memo;
         this.categoryMemberId = categoryMemberId;
-        this.taskList = taskList;
+        this.assignments = assignments;
     }
 }
