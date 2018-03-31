@@ -37,4 +37,7 @@ dependencies {
 	compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.projectlombok:lombok:1.16.20')
+	compile group: 'org.teiid', name: 'teiid-hibernate-dialect', version: '10.2.0'
+
+
 }
