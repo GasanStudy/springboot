@@ -22,28 +22,31 @@ public class Member extends BaseTimeEntity {
 	@GeneratedValue
 	private Long id;
 
+	@Column(unique = true, nullable = false)
 	String email;
 
+    @Column(nullable = false)
 	String name;
 
+    @Column(nullable = false)
 	String password;
 
 	@Column(name = "birth_date")
-	Date birthDate;
+    String birthDate;
 
 	@Column(name = "tel_num")
 	String telNum;
 
-	@Column(name = "email_yn")
-	Integer emailYN;
+	@Column(name = "email_yn", length = 4)
+    String emailYN;
 
-	@Column(name = "sns_facebook")
+	@Column(name = "sns_facebook", length = 500)
 	String snsFacebook;
 
-	@Column(name = "sns_google")
+	@Column(name = "sns_google", length = 500)
 	String snsGoogle;
 
-	@Column(name = "sns_naver")
+	@Column(name = "sns_naver", length = 500)
 	String snsNaver;
 
 	@OneToMany(mappedBy = "categoryMemberId")
@@ -55,8 +58,9 @@ public class Member extends BaseTimeEntity {
 	@OneToMany(mappedBy = "taskMemberId")
 	private List<Task> tasks;
 
-	@Builder
-	public Member(String email, String name, String password, Date birthDate, String telNum, Integer emailYN, String snsFacebook, String snsGoogle, String snsNaver, List<Category> categories, List<Assignment> assignments, List<Task> tasks) {
+
+    @Builder
+	public Member(String email, String name, String password, String birthDate, String telNum, String emailYN, String snsFacebook, String snsGoogle, String snsNaver) {
 		this.email = email;
 		this.name = name;
 		this.password = password;
@@ -66,8 +70,7 @@ public class Member extends BaseTimeEntity {
 		this.snsFacebook = snsFacebook;
 		this.snsGoogle = snsGoogle;
 		this.snsNaver = snsNaver;
-		this.categories = categories;
-		this.assignments = assignments;
-		this.tasks = tasks;
 	}
+
+
 }
