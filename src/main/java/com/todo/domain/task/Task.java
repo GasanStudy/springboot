@@ -15,30 +15,23 @@ import java.util.List;
 public class Task extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Column(nullable = false, length = 100)
     String title;
 
+    @Column(length = 200)
     String content;
 
-    @Column(name = "remind_code")
-    String  remindCode;
+    @Column(name = "share_code", nullable = false)
+    Integer  shareCode = 1;
 
-    @Column(name = "share_code")
-    String  shareCode;
+    @Column(name = "start")
+    String start;
 
-    @Column(name = "start_date")
-    Date    startDate;
-
-    @Column(name = "end_date")
-    Date    endDate;
-
-    @Column(name = "start_time")
-    Date    startTime;
-
-    @Column(name = "end_time")
-    Date    endTime;
+    @Column(name = "end")
+    String end;
 
 
     @OneToMany(mappedBy = "taskId")
@@ -49,18 +42,5 @@ public class Task extends BaseTimeEntity {
     private Long taskMemberId;
 
 
-    @Builder
 
-    public Task(String title, String content, String remindCode, String shareCode, Date startDate, Date endDate, Date startTime, Date endTime, List<Assignment> assignments, Long taskMemberId) {
-        this.title = title;
-        this.content = content;
-        this.remindCode = remindCode;
-        this.shareCode = shareCode;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.assignments = assignments;
-        this.taskMemberId = taskMemberId;
-    }
 }

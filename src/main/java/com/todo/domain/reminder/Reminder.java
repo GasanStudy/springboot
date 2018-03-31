@@ -14,26 +14,24 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Reminder extends BaseTimeEntity {
+public class Reminder {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "code_id")
     Long codeId;
 
-
     @Column(name = "date_time")
-    Date dateTime;
+    String dateTime;
 
     @ManyToOne(targetEntity = Assignment.class)
     @JoinColumn(name = "assignment_id")
     Long assignmentId;
 
     @Builder
-
-    public Reminder(Long codeId, Date dateTime, Long assignmentId) {
+    public Reminder(Long codeId, String dateTime, Long assignmentId) {
         this.codeId = codeId;
         this.dateTime = dateTime;
         this.assignmentId = assignmentId;
