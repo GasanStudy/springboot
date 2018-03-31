@@ -26,10 +26,9 @@ public class Category extends BaseTimeEntity {
 
     @ManyToOne(targetEntity=Member.class)
     @JoinColumn(name = "member_id")
-    @Column(nullable =false)
     Long categoryMemberId;
 
-    @OneToMany(mappedBy = "assignmentId")
+    @OneToMany(mappedBy = "categoryId")
     private List<Assignment> assignments;
 
 

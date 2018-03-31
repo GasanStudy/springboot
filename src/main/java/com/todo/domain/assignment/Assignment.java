@@ -1,6 +1,7 @@
 package com.todo.domain.assignment;
 
 import com.todo.domain.BaseTimeEntity;
+import com.todo.domain.category.Category;
 import com.todo.domain.member.Member;
 import com.todo.domain.reminder.Reminder;
 import com.todo.domain.task.Task;
@@ -37,6 +38,10 @@ public class Assignment extends BaseTimeEntity {
     @ManyToOne(targetEntity=Task.class)
     @JoinColumn(name = "task_id")
     Long taskId;
+
+    @ManyToOne(targetEntity = Category.class)
+    @JoinColumn(name ="category_id")
+    Long categoryId;
 
     @OneToMany(mappedBy = "assignmentId")
     private List<Reminder> reminders;
