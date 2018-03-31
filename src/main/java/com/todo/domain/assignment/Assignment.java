@@ -18,17 +18,17 @@ import java.util.List;
 @Getter
 public class Assignment extends BaseTimeEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "accept_yn")
-    String acceptYN;
+    @Column(name = "accept_yn", nullable = false, length = 4)
+    String acceptYN = "N";
 
-    @Column(name = "complete_yn")
-    String completeYN;
+    @Column(name = "complete_yn",nullable = false, length = 4)
+    String completeYN = "N";
 
     @Column(name = "complete_date")
-    Date completeDate;
+    String completeDate;
 
     @ManyToOne(targetEntity=Member.class)
     @JoinColumn(name = "member_id")
@@ -38,18 +38,13 @@ public class Assignment extends BaseTimeEntity {
     @JoinColumn(name = "task_id")
     Long taskId;
 
-    @ManyToOne(targetEntity=Assignment.class)
-    @JoinColumn(name = "assignment_id")
-    Long assignmentId;
-
-
     @OneToMany(mappedBy = "assignmentId")
     private List<Reminder> reminders;
 
 
     @Builder
 
-    public Assignment(String acceptYN, String completeYN, Date completeDate, Long assignmentMemberId, Long taskId) {
+    public Assignment(String acceptYN, String completeYN, String completeDate, Long assignmentMemberId, Long taskId) {
         this.acceptYN = acceptYN;
         this.completeYN = completeYN;
         this.completeDate = completeDate;

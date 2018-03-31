@@ -15,16 +15,18 @@ import java.util.List;
 public class Category extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Column(nullable = false)
     String title;
 
+    @Column(length = 1000)
     String memo;
-
 
     @ManyToOne(targetEntity=Member.class)
     @JoinColumn(name = "member_id")
+    @Column(nullable =false)
     Long categoryMemberId;
 
     @OneToMany(mappedBy = "assignmentId")
@@ -32,11 +34,9 @@ public class Category extends BaseTimeEntity {
 
 
     @Builder
-
-    public Category(String title, String memo, Long categoryMemberId, List<Assignment> assignments) {
+    public Category(String title, String memo, Long categoryMemberId) {
         this.title = title;
         this.memo = memo;
         this.categoryMemberId = categoryMemberId;
-        this.assignments = assignments;
     }
 }
